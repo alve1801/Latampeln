@@ -73,6 +73,6 @@ def fahrrad():
 while 1:
 #Ampelschaltung
     if G.input(auto_sensor):
-        start_new_thread(auto)
+        start_new_thread(auto, ())
     if G.input(fahrrad_sensor):
-        start_new_thread(fahrrad)
+        start_new_thread(fahrrad, ())
