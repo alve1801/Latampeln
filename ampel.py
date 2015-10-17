@@ -69,4 +69,4 @@ while 1:
         G.output(beleuchtung_1, False)
         G.output(beleuchtung_2, False)
         G.output(beleuchtung_3, False)
-        g.output(fahrrad_rot, True)
+        G.output(fahrrad_rot, True)
