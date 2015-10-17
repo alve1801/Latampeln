@@ -55,4 +55,4 @@ def fahrrad():
 start_new_thread(auto, ())
 start_new_thread(fahrrad, ())
 while 1:
-    
+    t.sleep(100)
