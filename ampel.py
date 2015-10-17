@@ -2,45 +2,71 @@
 #
 import RPi.GPIO as G
 import time as t
+auto_rot = 4
+auto_gelb = 17
+auto_grün = 18
+fahrrad_rot = 27
+fahrrad_grün = 22
+auto_rechts = 23
+auto_sensor = 24
+fahrrad_sensor = 25
+beleuchtung_1 = 5
+beleuchtung_2 = 6
+beleuchtung_3 = 12
 G.setmode(G.BCM)
-#Autoampel rot
-G.setup(4, G.OUT)
-#Autoampel gelb
-G.setup(17, G.OUT)
-#Autoampel grün
-G.setup(18, G.OUT)
-#Fahrradampel rot
-G.setup(27, G.OUT)
-#Fahrradampel grün
-G.setup(22, G.OUT)
-#Autoampel Rechtsabbieger
-G.setup(23, G.OUT)
-#Straßenbeleuchtung
-G.setup(5, G.OUT)
-G.setup(6, G.OUT)
-#1. Sensor
-G.setup(24, G.IN)
-#2. Sensor
-G.setup(25, G.IN)
-#alle Lampen ausschalten
-G.output(4, False)
-G.output(17, False)
-G.output(18, False)
-G.output(27, False)
-G.output(22, False)
-G.output(23, False)
-G.output(5, False)
-G.output(6, False)
-#alles auf rot setzen
-G.output(4, True)
-G.output(27, True)
+G.setup(auto_rot, G.OUT)
+G.setup(auto_gelb, G.OUT)
+G.setup(auto_grün, G.OUT)
+G.setup(fahrrad_rot, G.OUT)
+G.setup(fahrrad_grün, G.OUT)
+G.setup(auto_rechts, G.OUT)
+G.setup(auto_sensor, G.IN)
+G.setup(fahrrad_sensor, G.IN)
+G.setup(beleuchtung_1, G.OUT)
+G.setup(beleuchtung_2, G.OUT)
+G.setup(beleuchtung_3, G.OUT)
+G.output(auto_rot, False)
+G.output(auto_gelb, False)
+G.output(auto_grün, False)
+G.output(fahrrad_rot, False)
+G.output(fahrrad_grün, False)
+G.output(auto_rechts, False)
+G.output(beleuchtung_1, False)
+G.output(beleuchtung_2, False)
+G.output(beleuchtung_3, False)
+#Ampel Status setzen
+G.output(auto_rot, True)
+G.output(fahrrad_rot, True)
 while 1:
-#Autoampelschaltung
-    if G.input(24):
-        G.output(5, True)
-        G.output(6, True)
-        G.output(17, True)
+#Ampelschaltung
+    if G.input(auto_sensor):
+        G.output(auto_rot, False)
+        G.output(beleuchtung_1, True)
+        G.output(beleuchtung_2, True)
+        G.output(beleuchtung_3, True)
+        G.output(auto_gelb, True)
         t.sleep(1.5)
-        G.output(17, False)
-        G.output(18, True)
-        
+        G.output(auto_gelb, False)
+        G.output(auto_grün, True)
+        t.sleep(5)
+        G.output(auto_grün, False)
+        G.output(beleuchtung_1, False)
+        G.output(beleuchtung_2, False)
+        G.output(beleuchtung_3, False)
+        G.output(auto_gelb, True)
+        G.output(auto_rot, True)
+        t.sleep(1.5)
+        G.output(auto_gelb, False)
+    if G.input(fahrrad_sensor):
+        G.output(auto_rechts, True)
+        G.output(beleuchtung_1, True)
+        G.output(beleuchtung_2, True)
+        G.output(beleuchtung_3, True)
+        G.output(fahrrad_rot, False)
+        G.output(fahrrad_grün, True)
+        t.sleep(5)
+        G.output(fahrrad_grün, False)
+        G.output(beleuchtung_1, False)
+        G.output(beleuchtung_2, False)
+        G.output(beleuchtung_3, False)
+        g.output(fahrrad_rot, True)
