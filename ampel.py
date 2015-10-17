@@ -70,3 +70,4 @@ while 1:
         G.output(beleuchtung_2, False)
         G.output(beleuchtung_3, False)
         G.output(fahrrad_rot, True)
+        G.output(auto_rechts, False)
