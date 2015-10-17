@@ -10,9 +10,9 @@ fahrrad_grün = 22
 auto_rechts = 23
 auto_sensor = 24
 fahrrad_sensor = 25
-beleuchtung_1 = 5
-beleuchtung_2 = 6
-beleuchtung_3 = 12
+beleuchtung_1 = 26
+beleuchtung_2 = 20
+beleuchtung_3 = 21
 G.setmode(G.BCM)
 G.setup(auto_rot, G.OUT)
 G.setup(auto_gelb, G.OUT)
