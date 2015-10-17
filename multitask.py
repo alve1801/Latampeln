@@ -2,7 +2,7 @@
 #
 import RPi.GPIO as G
 import time as t
-from thread import start_new_thread
+from _thread import start_new_thread
 auto_rot = 4
 auto_gelb = 17
 auto_grün = 18
